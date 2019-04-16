@@ -29,9 +29,6 @@ coin = VKCoin(token = 'ваш_токен', merchant_id = ваш_id)
 ```python
 coin.getPaymentURL(1000)
 >>> 'https://vk.com/coin#xВАШID_1000_PAYLOAD'
-
-coin.getPaymentURL(1000, free = True)
->>> 'https://vk.com/coin#xВАШID_1000_PAYLOAD_1'
 ```
 **Обратите внимание, что сумма указывается в тысячных долях.**\
 В примере выше 1000 = 1 VK Coin.
@@ -89,6 +86,49 @@ coin.getBalance()
 coin.getBalance([1, 1324639])
 >>> {'response': {'1': 92697214157, '1324639': 6935662916530}}
 ```
+
+## getTop()
+Возвращает список текущего топа.
+
+|Аргумент|Тип|Обязательный|Описание|
+|-|-|-|-|
+|type|<p align="center">str</p>|<p align="center">—</p>|Тип возвращаемого топа (`group` или `user`).<br>По умолчанию — `group`.|
+
+```python
+coin.getTop()
+>>> [
+     {'id': 67580761,
+      'score': 473553513081870,
+      'name': 'КБ',
+      'screen_name': 'countryballs_re',
+      'is_closed': 0,
+      'type': 'page',
+      'photo_200': 'https://sun9-18.userapi.com/c850420/v850420990/ff275/6svrAL6jtME.jpg?ava=1',
+      'link': 'https://vk.com/club67580761'},
+     {'id': 98699940,
+     'score': 473550301524363,
+     'name': "Bratishkin's Stream",
+     'screen_name': 'bratishkinoff',
+     'is_closed': 0,
+     'type': 'page',
+     'photo_200': 'https://sun9-9.userapi.com/c851416/v851416466/fcfa5/LZGnlIJVEBw.jpg?ava=1',
+     'link': 'https://vk.com/club98699940'}
+    ]
+```
+## longPoll()
+Блокирующий «longpoll». Не принимает аргументов.<br>
+При появлении новой входящей транзакции возвращает следующий словарь:
+|Ключ|Тип|Описание|
+|-|-|-|-|
+|from|<p align="center">int</p>|ID пользователя, от которого пришел платеж.|
+|amount|<p align="center">int</p>|Сумма платежа.|
+|payload|<p align="center">int</p>|Payload для нахождения платежа в истории.|
+
+```python
+coin.longPoll()
+>>> {'response': {'from': 165275777, 'amount': 1, 'payload': 1624215}}
+```
+
 # Ссылки
 * Мой профиль ВКонтакте: [vk.com/bixnel](https://vk.com/bixnel)
 * Подробнее про VK Coin API: [vk.com/@hs-marchant-api](https://vk.com/@hs-marchant-api)
