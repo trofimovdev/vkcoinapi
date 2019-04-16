@@ -11,11 +11,11 @@ pip3 install vkcoinapi
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
 |key|<p align="center">str</p>|<p align="center">+</p>|Ключ доступа к VK Coin, полученный здесь: [vk.com/coin#create_merchant](https://vk.com/coin#create_merchant)|
-|merchant_id|<p align="center">int</p>|<p align="center">+</p>|ID пользователя ВКонтакте, для которого получен ключ|
-|token|<p align="center">str</p>|<p align="center">—</p>|Токен, полученный [здесь](https://oauth.vk.com/authorize?client_id=6334949&scope=1073737727&redirect_uri=https://api.vk.com/blank.html&display=page&response_type=token&revoke=1). Необходим только при использовании longPoll() и getTop().|
+|merchantId|<p align="center">int</p>|<p align="center">+</p>|ID пользователя ВКонтакте, для которого получен ключ|
+|token|<p align="center">str</p>|<p align="center">—</p>|Токен, полученный из URL адреса [здесь](https://oauth.vk.com/authorize?client_id=6334949&scope=1073737727&redirect_uri=https://api.vk.com/blank.html&display=page&response_type=token&revoke=1). Необходим только при использовании longPoll() и getTop().|
 ```python
 from vkcoinapi import *
-coin = VKCoin(token = 'ваш_токен', merchant_id = ваш_id)
+coin = VKCoin(key = 'ваш_ключ', merchantId = ваш_id)
 ```
 После этого становятся доступны следующие методы, которые возвращают JSON словарь:
 ## getPaymentURL()
