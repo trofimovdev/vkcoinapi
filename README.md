@@ -29,6 +29,9 @@ coin = VKCoin(token = 'ваш_токен', merchant_id = ваш_id)
 ```python
 coin.getPaymentURL(1000)
 >>> 'https://vk.com/coin#xВАШID_1000_PAYLOAD'
+
+coin.getPaymentURL(1000, free = True)
+>>> 'https://vk.com/coin#xВАШID_1000_PAYLOAD_1'
 ```
 **Обратите внимание, что сумма указывается в тысячных долях.**\
 В примере выше 1000 = 1 VK Coin.
