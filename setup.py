@@ -6,13 +6,13 @@ with open(path.join(this_directory, 'README.md'), encoding = 'utf-8') as f:
 
 setup(
     name = 'vkcoinapi',
-    version = '1.1.2',
+    version = '1.2.0',
     packages = find_packages(),
     url = 'https://github.com/bixnel/vkcoinapi',
     license = 'MIT',
     author = 'Bixnel',
     long_description = long_description,
     long_description_content_type = 'text/markdown',
-    install_requires = ['requests', 'time', 'random', 'json', 'websocket'],
+    install_requires = ['requests', 'websocket'],
     classifiers = ['Programming Language :: Python :: 3.6'],
 )
