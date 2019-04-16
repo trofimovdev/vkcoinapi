@@ -10,8 +10,8 @@ pip3 install vkcoinapi
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
-|token|str|<p align="center">+</p>|Ключ доступа к VK Coin, полученный здесь: [vk.com/coin#create_merchant](https://vk.com/coin#create_merchant)|
-|merchant_id|int|<p align="center">+</p>|ID пользователя ВКонтакте, для которого получен ключ|
+|token|<p align="center">str</p>|<p align="center">+</p>|Ключ доступа к VK Coin, полученный здесь: [vk.com/coin#create_merchant](https://vk.com/coin#create_merchant)|
+|merchant_id|<p align="center">int</p>|<p align="center">+</p>|ID пользователя ВКонтакте, для которого получен ключ|
 ```python
 from vkcoinapi import *
 coin = VKCoin(token = 'ваш_токен', merchant_id = ваш_id)
@@ -23,9 +23,9 @@ coin = VKCoin(token = 'ваш_токен', merchant_id = ваш_id)
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
-|amount|int|<p align="center">+</p>|Сумма перевода.|
-|payload|int|<p align="center">—</p>|Любое число от `-2000000000` до `2000000000`, вернется вам в списке транзаций. Если не указано, отправляется случайное число.|
-|free|bool|<p align="center">—</p>|Может ли пользователь изменять сумму перевода. По умолчанию `False`.
+|amount|<p align="center">int</p>|<p align="center">+</p>|Сумма перевода.|
+|payload|<p align="center">int</p>|<p align="center">—</p>|Любое число от `-2000000000` до `2000000000`, вернется вам в списке транзаций. Если не указано, отправляется случайное число.|
+|free|<p align="center">bool</p>|<p align="center">—</p>|Может ли пользователь изменять сумму перевода. По умолчанию `False`.
 ```python
 coin.getPaymentURL(1000)
 >>> 'https://vk.com/coin#xВАШID_1000_PAYLOAD'
@@ -40,7 +40,7 @@ coin.getPaymentURL(1000)
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
-|type|int|<p align="center">—</p>|1 — вернутся 1000 последних транзакций **со ссылки на оплату**<br>2 — вернутся 100 последних транзакций<br>По умолчанию `2`.|
+|type|<p align="center">int</p>|<p align="center">—</p>|1 — вернутся 1000 последних транзакций **со ссылки на оплату**<br>2 — вернутся 100 последних транзакций<br>По умолчанию `2`.|
 ```python
 coin.getTransactions()
 >>> {'response': [
@@ -67,8 +67,8 @@ coin.getTransactions()
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
-|to|int|<p align="center">+</p>|ID пользователя, кому отправляем перевод.|
-|amount|int|<p align="center">+</p>|Сумма перевода.|
+|to|<p align="center">int</p>|<p align="center">+</p>|ID пользователя, кому отправляем перевод.|
+|amount|<p align="center">int</p>|<p align="center">+</p>|Сумма перевода.|
 ```python
 coin.sendPayment(1, 100)
 >>> {'response': {'id': 1400290, 'amount': 100, 'current': 578637358}}
@@ -78,7 +78,7 @@ coin.sendPayment(1, 100)
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
-|user_ids|list|<p align="center">—</p>|ID пользователей, для которых нужно узнать баланс.<br>По умолчанию — наш ID.|
+|user_ids|<p align="center">list</p>|<p align="center">—</p>|ID пользователей, для которых нужно узнать баланс.<br>По умолчанию — наш ID.|
 ```python
 coin.getBalance()
 >>> {'response': {'165275777': 578637358}}
