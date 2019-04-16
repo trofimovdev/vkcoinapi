@@ -10,7 +10,7 @@ pip3 install vkcoinapi
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
-|token|str|<p align="center">+</p>|Ключ доступа к VK Coin, полученные здесь: vk.com/coin#create_merchant|
+|token|str|<p align="center">+</p>|Ключ доступа к VK Coin, полученный здесь: [vk.com/coin#create_merchant](https://vk.com/coin#create_merchant)|
 |merchant_id|int|<p align="center">+</p>|ID пользователя ВКонтакте, для которого получен ключ|
 ```python
 from vkcoinapi import *
