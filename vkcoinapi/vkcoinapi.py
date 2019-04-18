@@ -25,21 +25,21 @@ class VKCoin():
                                .get('items')[0]\
                                .get('mobile_iframe_url')\
                                .replace('https', 'wss')\
-                               .replace('index.html', 'channel/{}'.format(self.merchantId % 32))\
-                               + '&ver=1&upd=1&pass={}'.format(int(self.merchantId) - 1)
+                               .replace('index.html', 'channel/{}'.format(str(self.merchantId) % 32))\
+                               + '&ver=1&upd=1&pass={}'.format(str(int(self.merchantId) - 1))
 
-    def get_payment_url(self,
+    def getPaymentURL(self,
                         amount,
                         payload = randint(-2000000000, 2000000000),
                         free = False):
         if free == False:
-            return 'https://vk.com/coin#x{}_{}_{}'.format(self.merchant_id,
-                                                          amount,
-                                                          payload)
+            return 'https://vk.com/coin#x{}_{}_{}'.format(str(self.merchant_id),
+                                                          str(amount),
+                                                          str(payload))
         else:
-            return 'https://vk.com/coin#x{}_{}_{}_1'.format(self.merchantId,
-                                                            amount,
-                                                            payload)
+            return 'https://vk.com/coin#x{}_{}_{}_1'.format(str(self.merchantId),
+                                                            str(amount),
+                                                            str(payload))
 
     def getTransactions(self,
                         type = 2):
@@ -73,17 +73,20 @@ class VKCoin():
         return response
 
     def longPoll(self):
-        self.ws = create_connection(self.wss_url)
-        while True:
-            try:
-                response = self.ws.recv()
-                if response.startswith('TR'):
-                    response = response.split()
-                    return {'response': {'from': int(response[2]), 'amount': int(response[1]), 'payload': int(response[3])}}
-                    break
-            except Exception as e:
-                self.ws = create_connection(self.wss_url)
-            sleep(0.1)
+        if self.wss_url:
+            self.ws = create_connection(self.wss_url)
+            while True:
+                try:
+                    response = self.ws.recv()
+                    if response.startswith('TR'):
+                        response = response.split()
+                        return {'response': {'from': int(response[2]), 'amount': int(response[1]), 'payload': int(response[3])}}
+                        break
+                except Exception as e:
+                    self.ws = create_connection(self.wss_url)
+                sleep(0.1)
+        else:
+            raise Exception('token is not defined')
 
     def getTop(self, type = 'group'):
         self.ws = create_connection(self.wss_url)
