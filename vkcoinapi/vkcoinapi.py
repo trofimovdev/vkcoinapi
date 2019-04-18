@@ -9,11 +9,11 @@ class VKCoin():
                  key,
                  merchantId,
                  token = ''):
-            self.key = key
-            self.merchantId = merchantId
+            self.key = str(key)
+            self.merchantId = int(merchantId)
             self.appId = 6915965
             self.url = 'https://coin-without-bugs.vkforms.ru/merchant'
-            self.token = token
+            self.token = str(token)
             self.v = '5.92'
             if self.token != '':
                 self.wss_url = post('https://api.vk.com/method/apps.get',
