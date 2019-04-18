@@ -28,12 +28,12 @@ class VKCoin():
                                .replace('index.html', 'channel/{}'.format(self.merchantId % 32))\
                                + '&ver=1&upd=1&pass={}'.format(int(self.merchantId) - 1)
 
-    def getPaymentURL(self,
-                      amount,
-                      payload = randint(-2000000000, 2000000000),
-                      free = False):
+    def get_payment_url(self,
+                        amount,
+                        payload = randint(-2000000000, 2000000000),
+                        free = False):
         if free == False:
-            return 'https://vk.com/coin#x{}_{}_{}'.format(self.merchantId,
+            return 'https://vk.com/coin#x{}_{}_{}'.format(self.merchant_id,
                                                           amount,
                                                           payload)
         else:
