@@ -66,6 +66,7 @@ coin.getTransactions()
                    'created_at': 1555369272}
                   ]}
 ```
+
 ## sendPayment()
 Отправляет перевод.
 
@@ -78,6 +79,7 @@ coin.getTransactions()
 coin.sendPayment(1, 100)
 >>> {'response': {'id': 1400290, 'amount': 100, 'current': 578637358}}
 ```
+
 ## getBalance()
 Позволяет получить баланс пользователей.
 
@@ -122,6 +124,7 @@ coin.getTop()
      'link': 'https://vk.com/club98699940'}
     ]
 ```
+
 ## longPoll()
 Блокирующий «longpoll». Не принимает аргументов.<br>
 При появлении новой входящей транзакции возвращает следующий словарь:
@@ -137,6 +140,7 @@ coin.getTop()
 coin.longPoll()
 >>> {'response': {'from': 165275777, 'amount': 1, 'payload': 1624215}}
 ```
+
 ## setShopName()
 Изменяет название магазина.
 
@@ -149,8 +153,10 @@ coin.longPoll()
 coin.setShopName('My Shop')
 >>> {'response': '1'}
 ```
+
 ## setCallback()
 Изменяет адрес для callback запросов.
+
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
@@ -163,6 +169,7 @@ coin.setCallback('https://example.com/callback')
 coin.setCallback()
 >>> {'response': 'OFF'}
 ```
+
 # Ссылки
 * Я ВКонтакте: [vk.com/bixnel](https://vk.com/bixnel)
 * Подробнее про VK Coin API: [vk.com/@hs-marchant-api](https://vk.com/@hs-marchant-api)
