@@ -8,6 +8,7 @@ pip3 install vkcoinapi
 Перед началом необходимо создать экземпляр класса **VKCoin**.
 Он принимает 2 аргумента:
 
+
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
 |key|<p align="center">str</p>|<p align="center">+</p>|Ключ доступа к VK Coin, полученный здесь: [vk.com/coin#create_merchant](https://vk.com/coin#create_merchant)|
@@ -21,6 +22,7 @@ coin = VKCoin(key = 'ваш_ключ', merchantId = ваш_id)
 ## getPaymentURL()
 Возвращает ссылку на перевод вида `https://vk.com/coin#xВАШID_СУММА_PAYLOAD`.\
 Если необходимо, чтобы пользователь мог изменить сумму перевода, то в конец добавляется `_1`.
+
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
@@ -38,6 +40,7 @@ coin.getPaymentURL(1000)
 
 ## getTransactions()
 Возвращает список транзакций.
+
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
@@ -66,6 +69,7 @@ coin.getTransactions()
 ## sendPayment()
 Отправляет перевод.
 
+
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
 |to|<p align="center">int</p>|<p align="center">+</p>|ID пользователя, кому отправляем перевод.|
@@ -76,6 +80,7 @@ coin.sendPayment(1, 100)
 ```
 ## getBalance()
 Позволяет получить баланс пользователей.
+
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
@@ -90,6 +95,7 @@ coin.getBalance([1, 1324639])
 
 ## getTop()
 Возвращает список текущего топа.
+
 
 |Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
@@ -119,6 +125,8 @@ coin.getTop()
 ## longPoll()
 Блокирующий «longpoll». Не принимает аргументов.<br>
 При появлении новой входящей транзакции возвращает следующий словарь:
+
+
 |Ключ|Тип|Описание|
 |-|-|-|-|
 |from|<p align="center">int</p>|ID пользователя, от которого пришел платеж.|
@@ -131,17 +139,30 @@ coin.longPoll()
 ```
 ## setShopName()
 Изменяет название магазина.
-|Ключ|Тип|Описание|
+
+
+|Аргумент|Тип|Обязательный|Описание|
 |-|-|-|-|
-|from|<p align="center">int</p>|ID пользователя, от которого пришел платеж.|
-|amount|<p align="center">int</p>|Сумма платежа.|
-|payload|<p align="center">int</p>|Payload для нахождения платежа в истории.|
+|name|<p align="center">str</p>|<p align="center">+</p>|Новое название магазина.|
 
 ```python
-coin.longPoll()
->>> {'response': {'from': 165275777, 'amount': 1, 'payload': 1624215}}
+coin.setShopName('My Shop')
+>>> {'response': '1'}
 ```
+## setCallback()
+Изменяет адрес для callback запросов.
 
+|Аргумент|Тип|Обязательный|Описание|
+|-|-|-|-|
+|callback|<p align="center">str</p>|<p align="center">—</p>|Адрес для callback запросов.<br>Если не передан, callback выключается (передается `none`).|
+
+```python
+coin.setCallback('https://example.com/callback')
+>>> {'response': 'ON'}
+
+coin.setCallback()
+>>> {'response': 'OFF'}
+```
 # Ссылки
-* Мой профиль ВКонтакте: [vk.com/bixnel](https://vk.com/bixnel)
+* Я ВКонтакте: [vk.com/bixnel](https://vk.com/bixnel)
 * Подробнее про VK Coin API: [vk.com/@hs-marchant-api](https://vk.com/@hs-marchant-api)
