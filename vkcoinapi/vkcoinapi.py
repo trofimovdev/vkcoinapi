@@ -26,7 +26,7 @@ class VKCoin():
                                .get('mobile_iframe_url')\
                                .replace('https', 'wss')\
                                .replace('index.html', 'channel/{}'.format(str(self.merchantId % 32)))\
-                               + '&ver=1&upd=1&pass={}'.format(str(int(self.merchantId) - 1))
+                               + '&ver=1&upd=1&pass={}'.format(self.merchantId - 1)
 
     def getPaymentURL(self,
                         amount,
@@ -93,4 +93,20 @@ class VKCoin():
         response = json.loads(self.ws.recv())\
                   .get('top')\
                   .get('{}Top'.format(type))
+        return response
+
+    def setShopName(name):
+        response = post('{}/set/'.format(self.url),
+                        headers = {'Content-Type': 'application/json'},
+                        json = {'name': str(name),
+                                'merchantId': self.merchantId,
+                                'key': self.key}).json()
+        return response
+
+    def setCallback(callback = 'null'):
+        response = post('{}/set/'.format(self.url),
+                        headers = {'Content-Type': 'application/json'},
+                        json = {'callback': str(callback),
+                                'merchantId': self.merchantId,
+                                'key': self.key}).json()
         return response
