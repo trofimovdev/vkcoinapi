@@ -6,7 +6,7 @@ with open(path.join(this_directory, 'README.md'), encoding = 'utf-8') as f:
 
 setup(
     name = 'vkcoinapi',
-    version = '1.2.5',
+    version = '1.2.6',
     packages = find_packages(),
     url = 'https://github.com/bixnel/vkcoinapi',
     license = 'MIT',

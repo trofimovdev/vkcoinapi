@@ -129,6 +129,18 @@ coin.getTop()
 coin.longPoll()
 >>> {'response': {'from': 165275777, 'amount': 1, 'payload': 1624215}}
 ```
+## setShopName()
+Изменяет название магазина.
+|Ключ|Тип|Описание|
+|-|-|-|-|
+|from|<p align="center">int</p>|ID пользователя, от которого пришел платеж.|
+|amount|<p align="center">int</p>|Сумма платежа.|
+|payload|<p align="center">int</p>|Payload для нахождения платежа в истории.|
+
+```python
+coin.longPoll()
+>>> {'response': {'from': 165275777, 'amount': 1, 'payload': 1624215}}
+```
 
 # Ссылки
 * Мой профиль ВКонтакте: [vk.com/bixnel](https://vk.com/bixnel)

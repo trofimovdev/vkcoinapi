@@ -33,7 +33,7 @@ class VKCoin():
                         payload = randint(-2000000000, 2000000000),
                         free = False):
         if free == False:
-            return 'https://vk.com/coin#x{}_{}_{}'.format(str(self.merchant_id),
+            return 'https://vk.com/coin#x{}_{}_{}'.format(str(self.merchantId),
                                                           str(amount),
                                                           str(payload))
         else:
@@ -95,7 +95,7 @@ class VKCoin():
                   .get('{}Top'.format(type))
         return response
 
-    def setShopName(name):
+    def setShopName(self, name):
         response = post('{}/set/'.format(self.url),
                         headers = {'Content-Type': 'application/json'},
                         json = {'name': str(name),
@@ -103,10 +103,10 @@ class VKCoin():
                                 'key': self.key}).json()
         return response
 
-    def setCallback(callback = 'null'):
+    def setCallback(self, callback = None):
         response = post('{}/set/'.format(self.url),
                         headers = {'Content-Type': 'application/json'},
-                        json = {'callback': str(callback),
+                        json = {'callback': callback,
                                 'merchantId': self.merchantId,
                                 'key': self.key}).json()
         return response
